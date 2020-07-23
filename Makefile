@@ -68,7 +68,7 @@ endif
 
 lint: gofmt
 ifeq "$(BUILD_IN_DOCKER)" "true"
-	$(DOCKER) run -v $(PWD):/go/src/github.com/prakritichauhan07/kube-router -w /go/src/github.com/prakritichauhan07/kube-router $(DOCKER_LINT_IMAGE) \
+	$(DOCKER) run -v $(PWD):/go/src/github.com/cloudnativelabs/kube-router -w /go/src/github.com/cloudnativelabs/kube-router $(DOCKER_LINT_IMAGE) \
 	     sh -c 'golangci-lint run ./...'
 else
 	golangci-lint run ./...
