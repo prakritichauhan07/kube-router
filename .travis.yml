@@ -2,6 +2,9 @@ services:
   - docker
 
 language: go
+arch:
+  - amd64
+  - arm64
 go:
   - 1.10.8
 
@@ -22,7 +25,11 @@ script:
   - build/travis-test.sh
   # All successfully built commits get an image placed in the kube-router-git
   # image repo and tagged with the commit hash.
-  - wget https://github.com/estesp/manifest-tool/releases/download/v1.0.2/manifest-tool-linux-amd64 -O manifest-tool && chmod +x manifest-tool
+  - if [ "${TRAVIS_CPU_ARCH}" == "arm64" ]; then
+      wget https://github.com/estesp/manifest-tool/releases/download/v1.0.2/manifest-tool-linux-arm64 -O manifest-tool && chmod +x manifest-tool
+    else
+      wget https://github.com/estesp/manifest-tool/releases/download/v1.0.2/manifest-tool-linux-amd64 -O manifest-tool && chmod +x manifest-tool
+    fi
   - build/travis-deploy.sh
 
 # This fixes issues when a contributor uses their own Travis CI account to test
