@@ -19,7 +19,7 @@ MAKEFILE_DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 UPSTREAM_IMPORT_PATH=$(GOPATH)/src/github.com/cloudnativelabs/kube-router/
 BUILD_IN_DOCKER?=true
 DOCKER_BUILD_IMAGE?=golang:1.10.8-alpine3.9
-DOCKER_LINT_IMAGE?= ab1997/golangci-lint:v1.34.0-alpine
+DOCKER_LINT_IMAGE?= ab1997/golangci-lint:v1.35.0-alpine
 QEMU_IMAGE?=multiarch/qemu-user-static
 ifeq ($(GOARCH), arm)
 ARCH_TAG_PREFIX=$(GOARCH)
